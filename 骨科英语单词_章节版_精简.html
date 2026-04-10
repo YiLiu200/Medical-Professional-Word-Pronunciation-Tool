@@ -1,0 +1,2563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骨科专业英语单词 - 按章节分类发音版</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            opacity: 0.8;
+            font-size: 1em;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .toc-title {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 12px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .toc-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .toc-item {
+            padding: 6px 14px;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #495057;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .toc-item:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        /* 大章节 */
+        .chapter {
+            margin-bottom: 40px;
+            scroll-margin-top: 20px;
+        }
+
+        .chapter-header {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chapter-number {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .chapter-title {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .chapter-subtitle {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-left: auto;
+        }
+
+        /* 小章节 */
+        .section {
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 3px solid #e9ecef;
+        }
+
+        .section-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            font-size: 1.2em;
+        }
+
+        /* 单词网格 */
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+        }
+
+        .word-item {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .word-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .speaker-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .speaker-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .speaker-btn.playing {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+            50% { box-shadow: 0 0 0 8px rgba(102, 126, 234, 0); }
+        }
+
+        .word-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .word-en {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 15px;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .word-phonetic {
+            font-size: 12px;
+            color: #6c757d;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 4px;
+        }
+
+        .word-cn {
+            font-size: 14px;
+            color: #495057;
+            line-height: 1.4;
+        }
+
+        .word-note {
+            font-size: 12px;
+            color: #868e96;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* 词根词缀特殊样式 */
+        .etymology-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .etymology-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .etymology-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .etymology-root {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: #667eea;
+            font-size: 16px;
+            min-width: 100px;
+        }
+
+        .etymology-meaning {
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+
+        .etymology-example {
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1a1a2e;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .word-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .chapter-subtitle {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 骨科专业英语单词</h1>
+            <p>严格按照PDF章节结构编排 | 点击 🔊 即可发音</p>
+        </div>
+
+        <div class="toc">
+            <div class="toc-title">📑 快速导航</div>
+            <div class="toc-list">
+                <a href="#ch1" class="toc-item">1. 通用术语</a>
+                <a href="#ch2" class="toc-item">2. 骨解剖生理</a>
+                <a href="#ch3" class="toc-item">3. 中轴骨</a>
+                <a href="#ch4" class="toc-item">4. 附肢骨</a>
+                <a href="#ch5" class="toc-item">5. 关节肌肉</a>
+                <a href="#ch6" class="toc-item">6. 运动生物力学</a>
+                <a href="#ch7" class="toc-item">7. 病理临床</a>
+                <a href="#ch8" class="toc-item">8. 诊断治疗</a>
+                <a href="#ch9" class="toc-item">9. 专业人员</a>
+                <a href="#ch10" class="toc-item">10. 生物微细胞</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- 第1章：通用术语 -->
+            <div class="chapter" id="ch1">
+                <div class="chapter-header">
+                    <div class="chapter-number">1</div>
+                    <div class="chapter-title">General Terminology</div>
+                    <div class="chapter-subtitle">通用术语</div>
+                </div>
+                <div class="word-grid">
+                    <div class="word-item" onclick="speak('Biologic agent', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Biologic agent</div>
+                            <div class="word-phonetic">/ˌbaɪəˈlɒdʒɪk ˈeɪdʒənt/</div>
+                            <div class="word-cn">生物制剂</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Render', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Render</div>
+                            <div class="word-phonetic">/ˈrɛndər/</div>
+                            <div class="word-cn">v.使成为,使处于某种状态;给予,提供</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Autologous', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Autologous</div>
+                            <div class="word-phonetic">/ɔːˈtɒləɡəs/</div>
+                            <div class="word-cn">a.自体的</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Allogeneic', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Allogeneic</div>
+                            <div class="word-phonetic">/ˌæləʊdʒəˈniːɪk/</div>
+                            <div class="word-cn">a.异体的</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Pluripotent stem cell', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Pluripotent stem cell</div>
+                            <div class="word-phonetic">/ˌplʊərɪˈpəʊtnt stɛm sɛl/</div>
+                            <div class="word-cn">多能干细胞</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Concomitant', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Concomitant</div>
+                            <div class="word-phonetic">/kənˈkɒmɪtənt/</div>
+                            <div class="word-cn">a.相关的,伴随的</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Regulatory process', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Regulatory process</div>
+                            <div class="word-phonetic">/ˈrɛɡjʊlətəri ˈprəʊsɛs/</div>
+                            <div class="word-cn">调控过程</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Pathophysiology', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Pathophysiology</div>
+                            <div class="word-phonetic">/ˌpæθəʊˌfɪziˈɒlədʒi/</div>
+                            <div class="word-cn">病理生理学</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Epidemiology', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Epidemiology</div>
+                            <div class="word-phonetic">/ˌɛpɪˌdiːmiˈɒlədʒi/</div>
+                            <div class="word-cn">流行病学</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Differential diagnosis', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Differential diagnosis</div>
+                            <div class="word-phonetic">/ˌdɪfəˈrɛnʃl ˌdaɪəɡˈnəʊsɪs/</div>
+                            <div class="word-cn">鉴别诊断</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Decision-making process', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Decision-making process</div>
+                            <div class="word-phonetic">/dɪˈsɪʒn ˈmeɪkɪŋ ˈprəʊsɛs/</div>
+                            <div class="word-cn">决策阶段</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Readiness', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Readiness</div>
+                            <div class="word-phonetic">/ˈrɛdinəs/</div>
+                            <div class="word-cn">准备状态;愿意</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('To date', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">To date</div>
+                            <div class="word-phonetic">/tu deɪt/</div>
+                            <div class="word-cn">迄今为止</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Mechanistic', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Mechanistic</div>
+                            <div class="word-phonetic">/ˌmɛkəˈnɪstɪk/</div>
+                            <div class="word-cn">机制上的</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('In doing so', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">In doing so</div>
+                            <div class="word-phonetic">/ɪn ˈduːɪŋ səʊ/</div>
+                            <div class="word-cn">通过这样做</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Whilst', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Whilst</div>
+                            <div class="word-phonetic">/waɪlst/</div>
+                            <div class="word-cn">当...的时候;与...同时;然而,但是;虽然,尽管</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Replicate', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Replicate</div>
+                            <div class="word-phonetic">/ˈrɛplɪkeɪt/</div>
+                            <div class="word-cn">v.重复,复制;自我繁殖 n.复制品</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Elucidate', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Elucidate</div>
+                            <div class="word-phonetic">/ɪˈluːsɪdeɪt/</div>
+                            <div class="word-cn">v.阐明,解释</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Convalescence', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Convalescence</div>
+                            <div class="word-phonetic">/ˌkɒnvəˈlɛsns/</div>
+                            <div class="word-cn">n.恢复期</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Be afflicted with', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Be afflicted with</div>
+                            <div class="word-phonetic">/bi əˈflɪktɪd wɪð/</div>
+                            <div class="word-cn">被...折磨</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Premature retirement', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Premature retirement</div>
+                            <div class="word-phonetic">/ˌpriːməˈtjʊərɪˈtaɪəmənt/</div>
+                            <div class="word-cn">过早退役</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第2章：骨解剖生理 -->
+            <div class="chapter" id="ch2">
+                <div class="chapter-header">
+                    <div class="chapter-number">2</div>
+                    <div class="chapter-title">Bone Anatomy & Physiology</div>
+                    <div class="chapter-subtitle">骨解剖/生理</div>
+                </div>
+                <div class="word-grid">
+                    <div class="word-item" onclick="speak('Collagen', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Collagen</div>
+                            <div class="word-phonetic">/ˈkɒlədʒən/</div>
+                            <div class="word-cn">胶原蛋白</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Phosphorus', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Phosphorus</div>
+                            <div class="word-phonetic">/ˈfɒsfərəs/</div>
+                            <div class="word-cn">磷</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Calcium', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Calcium</div>
+                            <div class="word-phonetic">/ˈkælsɪəm/</div>
+                            <div class="word-cn">钙</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Cancellous bone', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Cancellous bone</div>
+                            <div class="word-phonetic">/ˈkænsələs bəʊn/</div>
+                            <div class="word-cn">松质骨</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Compact bone', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Compact bone</div>
+                            <div class="word-phonetic">/kəmˈpækt bəʊn/</div>
+                            <div class="word-cn">密质骨</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Medullary cavity', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Medullary cavity</div>
+                            <div class="word-phonetic">/ˈmɛdəˌlɛri ˈkævɪti/</div>
+                            <div class="word-cn">骨髓腔</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Yellow bone marrow', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Yellow bone marrow</div>
+                            <div class="word-phonetic">/ˈjɛləʊ bəʊn ˈmærəʊ/</div>
+                            <div class="word-cn">黄骨髓</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Red bone marrow', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Red bone marrow</div>
+                            <div class="word-phonetic">/rɛd bəʊn ˈmærəʊ/</div>
+                            <div class="word-cn">红骨髓</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Epiphyseal plate', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Epiphyseal plate</div>
+                            <div class="word-phonetic">/ˌɛpɪˈfɪziəl pleɪt/</div>
+                            <div class="word-cn">骺板</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Epiphysis', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Epiphysis</div>
+                            <div class="word-phonetic">/ɪˈpɪfɪsɪs/</div>
+                            <div class="word-cn">骨骺</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Metaphysis', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Metaphysis</div>
+                            <div class="word-phonetic">/mɛˈtæfɪsɪs/</div>
+                            <div class="word-cn">干骺端</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Periosteum', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Periosteum</div>
+                            <div class="word-phonetic">/ˌpɛriˈɒstiəm/</div>
+                            <div class="word-cn">骨膜</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Diaphysis', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Diaphysis</div>
+                            <div class="word-phonetic">/daɪˈæfɪsɪs/</div>
+                            <div class="word-cn">骨干</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Trabeculae', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Trabeculae</div>
+                            <div class="word-phonetic">/trəˈbɛkjʊliː/</div>
+                            <div class="word-cn">骨小梁</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Haversian canals', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Haversian canals</div>
+                            <div class="word-phonetic">/həˈvɜːrʒən kəˈnælz/</div>
+                            <div class="word-cn">哈弗森管(骨小管)</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Osseous tissue', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Osseous tissue</div>
+                            <div class="word-phonetic">/ˈɒsiəs ˈtɪʃuː/</div>
+                            <div class="word-cn">骨组织</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Osteoblast', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Osteoblast</div>
+                            <div class="word-phonetic">/ˈɒstiəʊblæst/</div>
+                            <div class="word-cn">成骨细胞</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Osteoclast', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Osteoclast</div>
+                            <div class="word-phonetic">/ˈɒstiəʊklæst/</div>
+                            <div class="word-cn">破骨细胞</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Bone depression', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Bone depression</div>
+                            <div class="word-phonetic">/bəʊn dɪˈprɛʃn/</div>
+                            <div class="word-cn">骨凹陷</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Bone process', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Bone process</div>
+                            <div class="word-phonetic">/bəʊn ˈprəʊsɛs/</div>
+                            <div class="word-cn">骨突起</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Ossification', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Ossification</div>
+                            <div class="word-phonetic">/ˌɒsɪfɪˈkeɪʃn/</div>
+                            <div class="word-cn">骨化</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Decalcification', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Decalcification</div>
+                            <div class="word-phonetic">/diːˌkælsɪfɪˈkeɪʃn/</div>
+                            <div class="word-cn">脱钙</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Myelopoiesis', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Myelopoiesis</div>
+                            <div class="word-phonetic">/ˌmaɪələʊpɔɪˈiːsɪs/</div>
+                            <div class="word-cn">骨髓细胞生成</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第3章：中轴骨 -->
+            <div class="chapter" id="ch3">
+                <div class="chapter-header">
+                    <div class="chapter-number">3</div>
+                    <div class="chapter-title">Axial Skeleton</div>
+                    <div class="chapter-subtitle">中轴骨</div>
+                </div>
+
+                <!-- 3.1 颅面骨 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🦴</span>
+                        Cranial & Facial Bones | 颅面骨
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Temporal bone', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Temporal bone (Mastoid process)</div>
+                                <div class="word-phonetic">/ˈtɛmpərəl bəʊn/ /ˈmæstɔɪd ˈprəʊsɛs/</div>
+                                <div class="word-cn">颞骨 / 乳突</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Foramen magnum', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Foramen magnum</div>
+                                <div class="word-phonetic">/fəˈreɪmən ˈmæɡnəm/</div>
+                                <div class="word-cn">枕骨大孔</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Cranial bones', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Cranial bones</div>
+                                <div class="word-phonetic">/ˈkreɪniəl bəʊnz/</div>
+                                <div class="word-cn">颅骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Parietal bone', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Parietal bone</div>
+                                <div class="word-phonetic">/pəˈraɪɪtl bəʊn/</div>
+                                <div class="word-cn">顶骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Frontal bone', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Frontal bone</div>
+                                <div class="word-phonetic">/ˈfrʌntl bəʊn/</div>
+                                <div class="word-cn">额骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Occipital bone', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Occipital bone</div>
+                                <div class="word-phonetic">/ɒkˈsɪpɪtl bəʊn/</div>
+                                <div class="word-cn">枕骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Styloid process', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Styloid process</div>
+                                <div class="word-phonetic">/ˈstaɪlɔɪd ˈprəʊsɛs/</div>
+                                <div class="word-cn">茎突</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Sphenoid bone', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Sphenoid bone</div>
+                                <div class="word-phonetic">/ˈsfiːnɔɪd bəʊn/</div>
+                                <div class="word-cn">蝶骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Sella turcica', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Sella turcica</div>
+                                <div class="word-phonetic">/ˌsɛləˈtɜːrsɪkə/</div>
+                                <div class="word-cn">蝶鞍</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Ethmoid bone', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ethmoid bone</div>
+                                <div class="word-phonetic">/ˈɛθmɔɪd bəʊn/</div>
+                                <div class="word-cn">筛骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Sinus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Sinus</div>
+                                <div class="word-phonetic">/ˈsaɪnəs/</div>
+                                <div class="word-cn">窦</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Fontanelle', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Fontanelle</div>
+                                <div class="word-phonetic">/ˌfɒntəˈnɛl/</div>
+                                <div class="word-cn">囟门</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Suture', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Suture</div>
+                                <div class="word-phonetic">/ˈsuːtʃər/</div>
+                                <div class="word-cn">缝线;骨缝</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Facial bones', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Facial bones</div>
+                                <div class="word-phonetic">/ˈfeɪʃl bəʊnz/</div>
+                                <div class="word-cn">面部骨骼</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Lacrimal bones', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Lacrimal bones</div>
+                                <div class="word-phonetic">/ˈlækrɪml bəʊnz/</div>
+                                <div class="word-cn">泪骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Nasal bones', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Nasal bones</div>
+                                <div class="word-phonetic">/ˈneɪzl bəʊnz/</div>
+                                <div class="word-cn">鼻骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Vomer', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Vomer</div>
+                                <div class="word-phonetic">/ˈvəʊmər/</div>
+                                <div class="word-cn">犁骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Zygomatic bones', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Zygomatic bones</div>
+                                <div class="word-phonetic">/ˌzaɪɡəˈmætɪk bəʊnz/</div>
+                                <div class="word-cn">颧骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Maxilla', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Maxilla</div>
+                                <div class="word-phonetic">/mækˈsɪlə/</div>
+                                <div class="word-cn">上颌骨</div>
+                                <div class="word-note">Maxillary 上颌的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Mandible', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Mandible</div>
+                                <div class="word-phonetic">/ˈmændɪbl/</div>
+                                <div class="word-cn">下颌骨</div>
+                                <div class="word-note">Mandibular 下颌的</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3.2 脊柱胸部 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🦴</span>
+                        Vertebral Column & Chest | 脊柱&胸部
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Vertebra', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Vertebra; vertebrae</div>
+                                <div class="word-phonetic">/ˈvɜːrtɪbrə; ˈvɜːrtɪbriː/</div>
+                                <div class="word-cn">椎骨; 脊椎(复数)</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Cervical vertebrae', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Cervical vertebrae</div>
+                                <div class="word-phonetic">/ˈsɜːrvɪkl ˈvɜːrtɪbriː/</div>
+                                <div class="word-cn">颈椎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Thoracic vertebrae', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Thoracic vertebrae</div>
+                                <div class="word-phonetic">/θəˈræsɪk ˈvɜːrtɪbriː/</div>
+                                <div class="word-cn">胸椎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Lumbar vertebrae', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Lumbar vertebrae</div>
+                                <div class="word-phonetic">/ˈlʌmbər ˈvɜːrtɪbriː/</div>
+                                <div class="word-cn">腰椎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Sacral vertebrae', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Sacral vertebrae</div>
+                                <div class="word-phonetic">/ˈseɪkrəl ˈvɜːrtɪbriː/</div>
+                                <div class="word-cn">骶椎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Lumbosacral', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Lumbosacral</div>
+                                <div class="word-phonetic">/ˌlʌmbəʊˈseɪkrəl/</div>
+                                <div class="word-cn">腰骶部</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Coccyx', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Coccyx</div>
+                                <div class="word-phonetic">/ˈkɒksɪks/</div>
+                                <div class="word-cn">尾骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Lamina', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Lamina</div>
+                                <div class="word-phonetic">/ˈlæmɪnə/</div>
+                                <div class="word-cn">椎板</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Disk', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Disk</div>
+                                <div class="word-phonetic">/dɪsk/</div>
+                                <div class="word-cn">(关节)盘</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Ribs', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ribs</div>
+                                <div class="word-phonetic">/rɪbz/</div>
+                                <div class="word-cn">肋骨</div>
+                                <div class="word-note">Subcostal 肋骨下的; Chondrocostal 肋和肋软骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Sternum', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Sternum</div>
+                                <div class="word-phonetic">/ˈstɜːrnəm/</div>
+                                <div class="word-cn">胸骨</div>
+                                <div class="word-note">Manubrium 胸骨柄; Xiphoid process 剑突</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第4章：附肢骨 -->
+            <div class="chapter" id="ch4">
+                <div class="chapter-header">
+                    <div class="chapter-number">4</div>
+                    <div class="chapter-title">Appendicular Skeleton</div>
+                    <div class="chapter-subtitle">附肢骨</div>
+                </div>
+
+                <!-- 4.1 上肢 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🦴</span>
+                        Upper Extremity | 上肢
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Clavicle', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Clavicle</div>
+                                <div class="word-phonetic">/ˈklævɪkl/</div>
+                                <div class="word-cn">锁骨</div>
+                                <div class="word-note">Supraclavicular 锁骨上的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Humerus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Humerus</div>
+                                <div class="word-phonetic">/ˈhjuːmərəs/</div>
+                                <div class="word-cn">肱骨</div>
+                                <div class="word-note">Humeral 肱骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Radius', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Radius</div>
+                                <div class="word-phonetic">/ˈreɪdiəs/</div>
+                                <div class="word-cn">桡骨</div>
+                                <div class="word-note">Radial 桡骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Ulna', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ulna</div>
+                                <div class="word-phonetic">/ˈʌlnə/</div>
+                                <div class="word-cn">尺骨</div>
+                                <div class="word-note">Ulnar 尺骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Olecranon', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Olecranon</div>
+                                <div class="word-phonetic">/əʊˈlɛkrənɒn/</div>
+                                <div class="word-cn">鹰嘴</div>
+                                <div class="word-note">Olecranal 鹰嘴的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Carpals', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Carpals</div>
+                                <div class="word-phonetic">/ˈkɑːrplz/</div>
+                                <div class="word-cn">腕骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Metacarpals', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Metacarpals</div>
+                                <div class="word-phonetic">/ˌmɛtəˈkɑːrplz/</div>
+                                <div class="word-cn">掌骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Phalanges', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Phalanges</div>
+                                <div class="word-phonetic">/fəˈlændʒiːz/</div>
+                                <div class="word-cn">指骨</div>
+                                <div class="word-note">Phalangeal 指骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Scapula', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Scapula</div>
+                                <div class="word-phonetic">/ˈskæpjʊlə/</div>
+                                <div class="word-cn">肩胛骨</div>
+                                <div class="word-note">Scapular 肩胛骨的; Acromion 肩峰</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4.2 下肢骨盆 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🦴</span>
+                        Lower Extremity & Pelvis | 下肢&骨盆
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Pelvic', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Pelvic</div>
+                                <div class="word-phonetic">/ˈpɛlvɪk/</div>
+                                <div class="word-cn">骨盆的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Ilium', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ilium</div>
+                                <div class="word-phonetic">/ˈɪliəm/</div>
+                                <div class="word-cn">髂骨</div>
+                                <div class="word-note">Iliac 髂骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Ischium', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ischium</div>
+                                <div class="word-phonetic">/ˈɪskiəm/</div>
+                                <div class="word-cn">坐骨</div>
+                                <div class="word-note">Ischial 坐骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Pubis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Pubis</div>
+                                <div class="word-phonetic">/ˈpjuːbɪs/</div>
+                                <div class="word-cn">耻骨</div>
+                                <div class="word-note">Pubic symphysis 耻骨联合</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Acetabulum', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Acetabulum</div>
+                                <div class="word-phonetic">/ˌæsɪˈtæbjʊləm/</div>
+                                <div class="word-cn">髋臼</div>
+                                <div class="word-note">Acetabular 髋臼的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Femur', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Femur</div>
+                                <div class="word-phonetic">/ˈfiːmər/</div>
+                                <div class="word-cn">股骨</div>
+                                <div class="word-note">Femoral 股骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Patella', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Patella</div>
+                                <div class="word-phonetic">/pəˈtɛlə/</div>
+                                <div class="word-cn">髌骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Tibia', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Tibia</div>
+                                <div class="word-phonetic">/ˈtɪbiə/</div>
+                                <div class="word-cn">胫骨</div>
+                                <div class="word-note">Tibial 胫骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Fibula', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Fibula</div>
+                                <div class="word-phonetic">/ˈfɪbjʊlə/</div>
+                                <div class="word-cn">腓骨</div>
+                                <div class="word-note">Fibular/Peroneal 腓骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Malleolus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Malleolus</div>
+                                <div class="word-phonetic">/məˈliːələs/</div>
+                                <div class="word-cn">踝骨</div>
+                                <div class="word-note">Malleolar 踝骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Calcaneus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Calcaneus</div>
+                                <div class="word-phonetic">/kælˈkeɪniəs/</div>
+                                <div class="word-cn">跟骨</div>
+                                <div class="word-note">Calcaneal 跟骨的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Tarsals', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Tarsals</div>
+                                <div class="word-phonetic">/ˈtɑːrslz/</div>
+                                <div class="word-cn">跗骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Metatarsals', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Metatarsals</div>
+                                <div class="word-phonetic">/ˌmɛtəˈtɑːrslz/</div>
+                                <div class="word-cn">跖骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Phalanges', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Phalanges</div>
+                                <div class="word-phonetic">/fəˈlændʒiːz/</div>
+                                <div class="word-cn">趾骨</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第5章：关节肌肉结缔组织 -->
+            <div class="chapter" id="ch5">
+                <div class="chapter-header">
+                    <div class="chapter-number">5</div>
+                    <div class="chapter-title">Joints, Muscles & Connective Tissue</div>
+                    <div class="chapter-subtitle">关节,肌肉&结缔组织</div>
+                </div>
+
+                <!-- 5.1 基础术语 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🦴</span>
+                        Basic Terminology | 基础术语
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Articulation', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Articulation</div>
+                                <div class="word-phonetic">/ɑːrˌtɪkjʊˈleɪʃn/</div>
+                                <div class="word-cn">关节</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Suture joint', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Suture joint</div>
+                                <div class="word-phonetic">/ˈsuːtʃər dʒɔɪnt/</div>
+                                <div class="word-cn">缝合关节</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Synovial joint', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Synovial joint</div>
+                                <div class="word-phonetic">/saɪˈnəʊviəl dʒɔɪnt/</div>
+                                <div class="word-cn">滑膜关节</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Synovial cavity', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Synovial cavity</div>
+                                <div class="word-phonetic">/saɪˈnəʊviəl ˈkævɪti/</div>
+                                <div class="word-cn">关节腔</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Synovial membrane', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Synovial membrane</div>
+                                <div class="word-phonetic">/saɪˈnəʊviəl ˈmɛmbreɪn/</div>
+                                <div class="word-cn">滑膜</div>
+                                <div class="word-note">Synovitis 滑膜炎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Synovial fluid', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Synovial fluid</div>
+                                <div class="word-phonetic">/saɪˈnəʊviəl ˈfluːɪd/</div>
+                                <div class="word-cn">滑液</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Articular cartilage', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Articular cartilage</div>
+                                <div class="word-phonetic">/ɑːrˈtɪkjʊlər ˈkɑːrtɪlɪdʒ/</div>
+                                <div class="word-cn">关节软骨</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Meniscus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Meniscus</div>
+                                <div class="word-phonetic">/mɪˈnɪskəs/</div>
+                                <div class="word-cn">半月板</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Ligament', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ligament</div>
+                                <div class="word-phonetic">/ˈlɪɡəmənt/</div>
+                                <div class="word-cn">韧带</div>
+                                <div class="word-note">Ligamentous 韧带的</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Fascia', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Fascia</div>
+                                <div class="word-phonetic">/ˈfæʃiə/</div>
+                                <div class="word-cn">筋膜</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Tendon', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Tendon</div>
+                                <div class="word-phonetic">/ˈtɛndən/</div>
+                                <div class="word-cn">肌腱</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Striated muscle', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Striated muscle</div>
+                                <div class="word-phonetic">/ˈstraɪeɪtɪd ˈmʌsl/</div>
+                                <div class="word-cn">横纹肌</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Visceral muscle', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Visceral muscle</div>
+                                <div class="word-phonetic">/ˈvɪsərəl ˈmʌsl/</div>
+                                <div class="word-cn">内脏肌</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5.2 特定肌肉结构 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">💪</span>
+                        Specific Muscles & Structures | 特定肌肉&结构
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Quadriceps', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Quadriceps</div>
+                                <div class="word-phonetic">/ˈkwɒdrɪsɛp/</div>
+                                <div class="word-cn">股四头肌</div>
+                                <div class="word-note">Quadriceps tendon 股四头肌腱</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Hamstring', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Hamstring</div>
+                                <div class="word-phonetic">/ˈhæmstrɪŋ/</div>
+                                <div class="word-cn">腘绳肌</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Soleus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Soleus</div>
+                                <div class="word-phonetic">/ˈsəʊliəs/</div>
+                                <div class="word-cn">比目鱼肌</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Gastrocnemius', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Gastrocnemius</div>
+                                <div class="word-phonetic">/ˌɡæstrɒkˈniːmiəs/</div>
+                                <div class="word-cn">腓肠肌</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Gluteus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Gluteus medius/maximus/minimus</div>
+                                <div class="word-phonetic">/ˈɡluːtiəs/</div>
+                                <div class="word-cn">臀中/大/小肌</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Flexor-pronator mass', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Flexor-pronator mass</div>
+                                <div class="word-phonetic">/ˈflɛksər prəʊˈneɪtər mæs/</div>
+                                <div class="word-cn">屈肌-旋前肌群</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Anterior cruciate ligament', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Anterior cruciate ligament (ACL)</div>
+                                <div class="word-phonetic">/ænˈtɪəriər ˈkruːʃieɪt ˈlɪɡəmənt/</div>
+                                <div class="word-cn">前交叉韧带</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Ulnar collateral ligament', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ulnar collateral ligament (UCL)</div>
+                                <div class="word-phonetic">/ˈʌlnər kəˈlætərəl ˈlɪɡəmənt/</div>
+                                <div class="word-cn">尺侧副韧带</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Medial patellofemoral ligament', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Medial patellofemoral ligament</div>
+                                <div class="word-phonetic">/ˈmiːdiəl pəˈtɛləʊˈfɛmərəl ˈlɪɡəmənt/</div>
+                                <div class="word-cn">内侧髌骨韧带</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第6章：运动生物力学 -->
+            <div class="chapter" id="ch6">
+                <div class="chapter-header">
+                    <div class="chapter-number">6</div>
+                    <div class="chapter-title">Movement & Biomechanics</div>
+                    <div class="chapter-subtitle">运动&生物力学</div>
+                </div>
+                <div class="word-grid">
+                    <div class="word-item" onclick="speak('Adduction', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Adduction</div>
+                            <div class="word-phonetic">/əˈdʌkʃn/</div>
+                            <div class="word-cn">内收</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Abduction', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Abduction</div>
+                            <div class="word-phonetic">/æbˈdʌkʃn/</div>
+                            <div class="word-cn">外展</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Flexion', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Flexion</div>
+                            <div class="word-phonetic">/ˈflɛkʃn/</div>
+                            <div class="word-cn">屈曲</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Extension', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Extension</div>
+                            <div class="word-phonetic">/ɪkˈstɛnʃn/</div>
+                            <div class="word-cn">伸展</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Dorsiflexion', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Dorsiflexion</div>
+                            <div class="word-phonetic">/ˌdɔːrsɪˈflɛkʃn/</div>
+                            <div class="word-cn">背屈</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Plantar flexion', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Plantar flexion</div>
+                            <div class="word-phonetic">/ˈplæntər ˈflɛkʃn/</div>
+                            <div class="word-cn">跖屈</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Pronation', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Pronation</div>
+                            <div class="word-phonetic">/prəʊˈneɪʃn/</div>
+                            <div class="word-cn">旋前</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Supination', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Supination</div>
+                            <div class="word-phonetic">/ˌsuːpɪˈneɪʃn/</div>
+                            <div class="word-cn">旋后</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Rotation', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Rotation</div>
+                            <div class="word-phonetic">/rəʊˈteɪʃn/</div>
+                            <div class="word-cn">旋转</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Lunging', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Lunging</div>
+                            <div class="word-phonetic">/ˈlʌndʒɪŋ/</div>
+                            <div class="word-cn">前扑</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Sidestep cutting', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Sidestep cutting</div>
+                            <div class="word-phonetic">/ˈsaɪdstɛp ˈkʌtɪŋ/</div>
+                            <div class="word-cn">侧向迈步</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Sprint', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Sprint</div>
+                            <div class="word-phonetic">/sprɪnt/</div>
+                            <div class="word-cn">n/v.冲刺,短跑</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Mechanical strain', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Mechanical strain</div>
+                            <div class="word-phonetic">/mɪˈkænɪkl streɪn/</div>
+                            <div class="word-cn">机械应力</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Mechanical parameter', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Mechanical parameter</div>
+                            <div class="word-phonetic">/mɪˈkænɪkl pəˈræmɪtər/</div>
+                            <div class="word-cn">机械参数</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Biomechanics', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Biomechanics</div>
+                            <div class="word-phonetic">/ˌbaɪəʊmɪˈkænɪks/</div>
+                            <div class="word-cn">生物力学</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Interface friction', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Interface friction</div>
+                            <div class="word-phonetic">/ˈɪntərfeɪs ˈfrɪkʃn/</div>
+                            <div class="word-cn">界面摩擦</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Isometry', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Isometry</div>
+                            <div class="word-phonetic">/aɪˈsɒmətri/</div>
+                            <div class="word-cn">等长性</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Static', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Static</div>
+                            <div class="word-phonetic">/ˈstætɪk/</div>
+                            <div class="word-cn">静态的</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Anterior shear force', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Anterior/posterior shear force</div>
+                            <div class="word-phonetic">/ænˈtɪəriər pɒˈstɪəriər ʃɪər fɔːrs/</div>
+                            <div class="word-cn">前/后向剪切力</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Lateral translation', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Lateral translation</div>
+                            <div class="word-phonetic">/ˈlætərəl trænzˈleɪʃn/</div>
+                            <div class="word-cn">横向移位</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第7章：病理临床 -->
+            <div class="chapter" id="ch7">
+                <div class="chapter-header">
+                    <div class="chapter-number">7</div>
+                    <div class="chapter-title">Pathology & Clinical Conditions</div>
+                    <div class="chapter-subtitle">病理&临床状况</div>
+                </div>
+
+                <!-- 7.1 脊柱骨病 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🔬</span>
+                        Spine & Bone Disorders | 脊柱骨病
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Spondylolisthesis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Spondylolisthesis</div>
+                                <div class="word-phonetic">/ˌspɒndɪləʊlɪsˈθiːsɪs/</div>
+                                <div class="word-cn">脊椎滑脱症</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Ankylosing spondylitis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ankylosing spondylitis</div>
+                                <div class="word-phonetic">/ˌæŋkɪˌləʊzɪŋ ˌspɒndɪˈlaɪtɪs/</div>
+                                <div class="word-cn">强直性脊柱炎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Spondylosis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Spondylosis</div>
+                                <div class="word-phonetic">/ˌspɒndɪˈləʊsɪs/</div>
+                                <div class="word-cn">椎关节强硬</div>
+                                <div class="word-note">Cervical spondylosis 颈椎病</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Scoliosis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Scoliosis</div>
+                                <div class="word-phonetic">/ˌskəʊliˈəʊsɪs/</div>
+                                <div class="word-cn">脊柱侧凸</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Herniation of intervertebral disk', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Herniation of intervertebral disk</div>
+                                <div class="word-phonetic">/ˌhɜːrniˈeɪʃn/</div>
+                                <div class="word-cn">椎间盘突出</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Spinal stenosis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Spinal stenosis</div>
+                                <div class="word-phonetic">/ˈspaɪnl stəˈnəʊsɪs/</div>
+                                <div class="word-cn">椎管狭窄</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Osteitis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Osteitis</div>
+                                <div class="word-phonetic">/ˌɒstɪˈaɪtɪs/</div>
+                                <div class="word-cn">骨炎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Osteodystrophy', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Osteodystrophy</div>
+                                <div class="word-phonetic">/ˌɒstiəʊˈdɪstrəfi/</div>
+                                <div class="word-cn">骨营养不良</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Exostosis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Exostosis</div>
+                                <div class="word-phonetic">/ˌɛksɒˈstəʊsɪs/</div>
+                                <div class="word-cn">骨赘增生</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Osteogenesis imperfecta', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Osteogenesis imperfecta</div>
+                                <div class="word-phonetic">/ˌɒstiəʊˈdʒɛnəsɪs ˌɪmpərˈfɛktə/</div>
+                                <div class="word-cn">成骨不全症</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Osteomalacia', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Osteomalacia</div>
+                                <div class="word-phonetic">/ˌɒstiəʊməˈleɪʃə/</div>
+                                <div class="word-cn">骨软化症</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Osteomyelitis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Osteomyelitis</div>
+                                <div class="word-phonetic">/ˌɒstiəʊˌmaɪəˈlaɪtɪs/</div>
+                                <div class="word-cn">骨髓炎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Osteopenia', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Osteopenia</div>
+                                <div class="word-phonetic">/ˌɒstiəʊˈpiːniə/</div>
+                                <div class="word-cn">骨质减少</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Osteoporosis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Osteoporosis</div>
+                                <div class="word-phonetic">/ˌɒstiəʊpəˈrəʊsɪs/</div>
+                                <div class="word-cn">骨质疏松症</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Achondroplasia', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Achondroplasia</div>
+                                <div class="word-phonetic">/eɪˌkɒndrəˈpleɪziə/</div>
+                                <div class="word-cn">软骨发育不全</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Chondromalacia', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Chondromalacia</div>
+                                <div class="word-phonetic">/ˌkɒndrəʊməˈleɪʃə/</div>
+                                <div class="word-cn">软骨软化症</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Hypercalcemia', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Hypercalcemia</div>
+                                <div class="word-phonetic">/ˌhaɪpərkælˈsiːmiə/</div>
+                                <div class="word-cn">高钙血症</div>
+                                <div class="word-note">Hypocalcemia 低钙血症</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Hyperuricemia', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Hyperuricemia</div>
+                                <div class="word-phonetic">/ˌhaɪpərˌjʊərɪˈsiːmiə/</div>
+                                <div class="word-cn">高尿酸血症</div>
+                                <div class="word-note">Hypophosphatemia 低磷血症</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7.2 肿瘤感染 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🦠</span>
+                        Tumors & Infections | 肿瘤&感染
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Ewing sarcoma', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ewing sarcoma</div>
+                                <div class="word-phonetic">/ˈjuːɪŋ sɑːrˈkəʊmə/</div>
+                                <div class="word-cn">尤因肉瘤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Chondrosarcoma', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Chondrosarcoma</div>
+                                <div class="word-phonetic">/ˌkɒndrəʊsɑːrˈkəʊmə/</div>
+                                <div class="word-cn">软骨肉瘤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Osteosarcoma', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Osteogenic sarcoma / Osteosarcoma</div>
+                                <div class="word-phonetic">/ˌɒstiəʊˈsɑːrkəʊmə/</div>
+                                <div class="word-cn">骨肉瘤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Leiomyoma', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Leiomyoma</div>
+                                <div class="word-phonetic">/ˌlaɪəʊmaɪˈəʊmə/</div>
+                                <div class="word-cn">平滑肌瘤</div>
+                                <div class="word-note">Leiomyosarcoma 平滑肌肉瘤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Rhabdomyoma', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Rhabdomyoma</div>
+                                <div class="word-phonetic">/ˌræbdəʊmaɪˈəʊmə/</div>
+                                <div class="word-cn">横纹肌瘤</div>
+                                <div class="word-note">Rhabdomyosarcoma 横纹肌肉瘤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Myeloma', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Myeloma</div>
+                                <div class="word-phonetic">/ˌmaɪəˈləʊmə/</div>
+                                <div class="word-cn">骨髓瘤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Giant cell tumor of bone', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Giant cell tumor of the bone</div>
+                                <div class="word-cn">骨巨细胞瘤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Bone cyst', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Bone cyst</div>
+                                <div class="word-cn">骨囊肿</div>
+                                <div class="word-note">Aneurysmal bone cyst 动脉瘤性骨囊肿</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Lipoma', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Lipoma</div>
+                                <div class="word-phonetic">/laɪˈpəʊmə/</div>
+                                <div class="word-cn">脂肪瘤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Lyme disease', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Lyme disease</div>
+                                <div class="word-phonetic">/laɪm dɪˈziːz/</div>
+                                <div class="word-cn">莱姆病</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Tetanus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Tetanus</div>
+                                <div class="word-phonetic">/ˈtɛtənəs/</div>
+                                <div class="word-cn">破伤风</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7.3 关节肌肉疾病 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🦵</span>
+                        Joint & Muscle Disorders | 关节&肌肉疾病
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Ankylosis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ankylosis</div>
+                                <div class="word-phonetic">/ˌæŋkɪˈləʊsɪs/</div>
+                                <div class="word-cn">关节强直</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Hemarthrosis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Hemarthrosis</div>
+                                <div class="word-phonetic">/ˌhiːmɑːrˈθrəʊsɪs/</div>
+                                <div class="word-cn">关节积血</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Hydrarthrosis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Hydrarthrosis</div>
+                                <div class="word-phonetic">/ˌhaɪdrɑːrˈθrəʊsɪs/</div>
+                                <div class="word-cn">关节积水</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Gouty arthritis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Gouty arthritis</div>
+                                <div class="word-phonetic">/ˈɡaʊti ɑːrˈθraɪtɪs/</div>
+                                <div class="word-cn">痛风性关节炎</div>
+                                <div class="word-note">Podagra 足痛风</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Rheumatoid arthritis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Rheumatoid arthritis (RA)</div>
+                                <div class="word-phonetic">/ˈruːmətɔɪd ɑːrˈθraɪtɪs/</div>
+                                <div class="word-cn">类风湿性关节炎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Bunion', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Bunion</div>
+                                <div class="word-phonetic">/ˈbʌnjən/</div>
+                                <div class="word-cn">拇囊炎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Bursitis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Bursitis</div>
+                                <div class="word-phonetic">/bɜːrˈsaɪtɪs/</div>
+                                <div class="word-cn">滑囊炎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Carpal tunnel syndrome', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Carpal tunnel syndrome</div>
+                                <div class="word-phonetic">/ˈkɑːrpl ˈtʌnl ˈsɪndrəʊm/</div>
+                                <div class="word-cn">腕管综合征</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Muscular dystrophy', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Muscular dystrophy</div>
+                                <div class="word-phonetic">/ˈmʌskjʊlər ˈdɪstrəfi/</div>
+                                <div class="word-cn">肌营养不良症</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Myalgia', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Myalgia</div>
+                                <div class="word-phonetic">/maɪˈældʒə/</div>
+                                <div class="word-cn">肌痛</div>
+                                <div class="word-note">Fibromyalgia 纤维肌痛; Polymyalgia 多发性肌痛</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Polymyositis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Polymyositis</div>
+                                <div class="word-phonetic">/ˌpɒlimɪəˈsaɪtɪs/</div>
+                                <div class="word-cn">多发性肌炎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Systemic lupus erythematosus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Systemic lupus erythematosus</div>
+                                <div class="word-cn">系统性红斑狼疮</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Amyotrophic lateral sclerosis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Amyotrophic lateral sclerosis</div>
+                                <div class="word-cn">肌萎缩侧索硬化</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Myasthenia gravis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Myasthenia gravis</div>
+                                <div class="word-phonetic">/ˌmaɪəsˈθiːniəˈɡrævɪs/</div>
+                                <div class="word-cn">重症肌无力</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Atrophy', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Atrophy</div>
+                                <div class="word-phonetic">/ˈætrəfi/</div>
+                                <div class="word-cn">萎缩</div>
+                                <div class="word-note">Hypertrophy 肥大; Sarcopenia 肌肉减少症</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Ganglion cyst', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Ganglion cyst</div>
+                                <div class="word-phonetic">/ˈɡæŋɡliən sɪst/</div>
+                                <div class="word-cn">腱鞘囊肿</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Tenosynovitis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Tenosynovitis</div>
+                                <div class="word-phonetic">/ˌtɛnəʊˌsaɪnəˈvaɪtɪs/</div>
+                                <div class="word-cn">腱鞘炎</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Hamstring strain', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Hamstring strain</div>
+                                <div class="word-cn">腘绳肌拉伤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Raynaud syndrome', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Raynaud's syndrome</div>
+                                <div class="word-cn">雷诺综合征</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7.4 特定损伤骨折 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🩹</span>
+                        Specific Injuries & Fractures | 特定损伤&骨折
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Subluxation', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Subluxation</div>
+                                <div class="word-phonetic">/ˌsʌblʌkˈseɪʃn/</div>
+                                <div class="word-cn">半脱位</div>
+                                <div class="word-note">Dislocation 脱位</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Sprain', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Sprain</div>
+                                <div class="word-phonetic">/spreɪn/</div>
+                                <div class="word-cn">扭伤</div>
+                                <div class="word-note">Strain 劳损</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Fracture', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Fracture</div>
+                                <div class="word-phonetic">/ˈfræktʃər/</div>
+                                <div class="word-cn">骨折</div>
+                                <div class="word-note">Depressed fracture 凹陷骨折; Rib fracture 肋骨骨折</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Developmental dysplasia of hip', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Developmental dysplasia/dislocation of the hip (DDH)</div>
+                                <div class="word-cn">发育性髋关节发育不良/脱位</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Whiplash injury', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Whiplash injury</div>
+                                <div class="word-phonetic">/ˈwɪplæʃ/</div>
+                                <div class="word-cn">挥鞭伤</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Achilles tendon rupture', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Achilles' tendon rupture</div>
+                                <div class="word-cn">跟腱断裂</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Necrosis of femoral head', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Necrosis of the femoral head</div>
+                                <div class="word-cn">股骨头坏死</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Flail chest', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Flail chest</div>
+                                <div class="word-phonetic">/fleɪl tʃɛst/</div>
+                                <div class="word-cn">连枷胸</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Talipes', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Talipes</div>
+                                <div class="word-phonetic">/ˈtælɪpiːz/</div>
+                                <div class="word-cn">畸形足</div>
+                                <div class="word-note">Flat foot 平足症</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Hallux valgus', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Hallux valgus</div>
+                                <div class="word-phonetic">/ˈhæləks ˈvælɡəs/</div>
+                                <div class="word-cn">拇外翻</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Nerve injury', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Nerve injury</div>
+                                <div class="word-cn">神经损伤</div>
+                                <div class="word-note">Common peroneal/Femoral/Tibial/Median/Sciatic/Ulnar/Brachial plexus</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第8章：诊断治疗 -->
+            <div class="chapter" id="ch8">
+                <div class="chapter-header">
+                    <div class="chapter-number">8</div>
+                    <div class="chapter-title">Diagnosis & Procedures</div>
+                    <div class="chapter-subtitle">诊断&治疗程序</div>
+                </div>
+
+                <!-- 8.1 影像学检查 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🔍</span>
+                        Imaging & Tests | 影像学&检查
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Radiographic finding', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Radiographic finding</div>
+                                <div class="word-phonetic">/ˌreɪdiəˈɡræfɪk/</div>
+                                <div class="word-cn">影像学结果</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Arthrography', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Arthrography</div>
+                                <div class="word-phonetic">/ɑːrˈθrɒɡrəfi/</div>
+                                <div class="word-cn">关节造影术</div>
+                                <div class="word-note">Diskography 椎间盘造影术</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Arthroscopy', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Arthroscopy</div>
+                                <div class="word-phonetic">/ɑːrˈθrɒskəpi/</div>
+                                <div class="word-cn">关节镜检查</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Bone density test', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Bone density test / Bone scan</div>
+                                <div class="word-cn">骨密度测试/骨扫描</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Electromyography', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Electromyography (EMG)</div>
+                                <div class="word-phonetic">/ɪˌlɛktrəʊmaɪˈɒɡrəfi/</div>
+                                <div class="word-cn">肌电图</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('MRI', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">MRI</div>
+                                <div class="word-cn">磁共振成像</div>
+                                <div class="word-note">SPECT 单光子发射断层显像; SWI 磁敏感加权成像</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Antinuclear antibody test', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Antinuclear antibody test</div>
+                                <div class="word-cn">抗核抗体试验</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Erythrocyte sedimentation rate', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Erythrocyte sedimentation rate (ESR)</div>
+                                <div class="word-cn">红细胞沉降率</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Serum creatine kinase', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Serum creatine kinase</div>
+                                <div class="word-cn">血清肌酸激酶</div>
+                                <div class="word-note">Serum calcium 血清钙</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Uric acid test', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Uric acid test</div>
+                                <div class="word-cn">尿酸测试</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8.2 外科治疗 -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">💉</span>
+                        Surgery & Treatment | 外科&治疗
+                    </div>
+                    <div class="word-grid">
+                        <div class="word-item" onclick="speak('Arthroplasty', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Arthroplasty</div>
+                                <div class="word-phonetic">/ˈɑːrθrəʊplæsti/</div>
+                                <div class="word-cn">关节成形术</div>
+                                <div class="word-note">Vertebroplasty 椎体成形术</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Arthrocentesis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Arthrocentesis</div>
+                                <div class="word-phonetic">/ˌɑːrθrəʊsɛnˈtiːsɪs/</div>
+                                <div class="word-cn">关节穿刺术</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Arthrodesis', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Arthrodesis</div>
+                                <div class="word-phonetic">/ˌɑːrθrəʊˈdiːsɪs/</div>
+                                <div class="word-cn">关节融合术</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Arthrotomy', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Arthrotomy / Craniotomy</div>
+                                <div class="word-phonetic">/ɑːrˈθrɒtəmi/</div>
+                                <div class="word-cn">关节切开术/颅骨切开术</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Laminectomy', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Laminectomy</div>
+                                <div class="word-phonetic">/ˌlæmɪˈnɛktəmi/</div>
+                                <div class="word-cn">椎板切除术</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Metacarpectomy', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Metacarpectomy / Tarsectomy</div>
+                                <div class="word-cn">掌骨/跗骨切除术</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Tenorrhaphy', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Tenorrhaphy / Fasciotomy</div>
+                                <div class="word-cn">肌腱缝合术/筋膜切开术</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Reduction', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Reduction / Fixation</div>
+                                <div class="word-cn">复位/固定</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Limb replantation', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Limb/Digital replantation</div>
+                                <div class="word-cn">断肢/断指再植</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Docking technique', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">The docking technique</div>
+                                <div class="word-cn">对接技术</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Interference screw fixation', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Interference screw fixation / Suture anchor</div>
+                                <div class="word-cn">铆钉介入固定/缝合铆钉</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('TENS', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">TENS</div>
+                                <div class="word-cn">经皮神经电刺激疗法</div>
+                            </div>
+                        </div>
+                        <div class="word-item" onclick="speak('Rehabilitation', this.querySelector('.speaker-btn'))">
+                            <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                            <div class="word-info">
+                                <div class="word-en">Rehabilitation</div>
+                                <div class="word-phonetic">/ˌriːəˌbɪlɪˈteɪʃn/</div>
+                                <div class="word-cn">康复</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第9章：专业人员与仪器 -->
+            <div class="chapter" id="ch9">
+                <div class="chapter-header">
+                    <div class="chapter-number">9</div>
+                    <div class="chapter-title">Medical Professionals & Instruments</div>
+                    <div class="chapter-subtitle">医疗专业人员与医疗仪器</div>
+                </div>
+                <div class="word-grid">
+                    <div class="word-item" onclick="speak('Orthopedics', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Orthopedics</div>
+                            <div class="word-phonetic">/ˌɔːrθəˈpiːdɪks/</div>
+                            <div class="word-cn">矫形外科学</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Physiatrist', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Physiatrist</div>
+                            <div class="word-phonetic">/fɪˈzaɪətrɪst/</div>
+                            <div class="word-cn">物理医学与康复医师</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Rheumatologist', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Rheumatologist</div>
+                            <div class="word-phonetic">/ˌruːməˈtɒlədʒɪst/</div>
+                            <div class="word-cn">风湿病学家</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Craniotome', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Craniotome / Osteotome</div>
+                            <div class="word-cn">颅骨切割器/骨凿</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第10章：生物微细胞学 -->
+            <div class="chapter" id="ch10">
+                <div class="chapter-header">
+                    <div class="chapter-number">10</div>
+                    <div class="chapter-title">Biology, Micro-cellular & Misc</div>
+                    <div class="chapter-subtitle">生物学、微细胞学及其他相关领域</div>
+                </div>
+                <div class="word-grid">
+                    <div class="word-item" onclick="speak('Tenocytes', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Tenocytes</div>
+                            <div class="word-phonetic">/ˈtɛnəʊsaɪts/</div>
+                            <div class="word-cn">成纤维细胞</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Metalloproteinase', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Metalloproteinase (MMP)</div>
+                            <div class="word-cn">金属蛋白酶</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Macrophage', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Macrophage</div>
+                            <div class="word-phonetic">/ˈmækroʊfeɪdʒ/</div>
+                            <div class="word-cn">巨噬细胞</div>
+                            <div class="word-note">Progenitor cell 祖细胞</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Short-chain fatty acid', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Short-chain fatty acid</div>
+                            <div class="word-cn">短链脂肪酸</div>
+                            <div class="word-note">Dietary fiber 膳食纤维</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Vesicle', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Vesicle</div>
+                            <div class="word-phonetic">/ˈvɛsɪkl/</div>
+                            <div class="word-cn">囊泡</div>
+                            <div class="word-note">Dysbiosis 菌群失调</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Equilibrium', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Equilibrium</div>
+                            <div class="word-phonetic">/ˌiːkwɪˈlɪbriəm/</div>
+                            <div class="word-cn">n.平衡</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Fatty infiltration', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Fatty infiltration</div>
+                            <div class="word-cn">脂肪浸润</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Crepitus', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Crepitus</div>
+                            <div class="word-phonetic">/ˈkrɛpɪtəs/</div>
+                            <div class="word-cn">捻发音</div>
+                        </div>
+                    </div>
+                    <div class="word-item" onclick="speak('Pyrexia', this.querySelector('.speaker-btn'))">
+                        <button class="speaker-btn" onclick="event.stopPropagation()">🔊</button>
+                        <div class="word-info">
+                            <div class="word-en">Pyrexia</div>
+                            <div class="word-phonetic">/paɪˈrɛksiə/</div>
+                            <div class="word-cn">发热</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" title="回到顶部">↑</a>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // 语音合成
+        const synth = window.speechSynthesis;
+        let voices = [];
+
+        function loadVoices() {
+            voices = synth.getVoices();
+        }
+
+        if (synth.onvoiceschanged !== undefined) {
+            synth.onvoiceschanged = loadVoices;
+        }
+        loadVoices();
+
+        function speak(text, btn) {
+            if (synth.speaking) {
+                synth.cancel();
+            }
+
+            // 清理文本
+            let cleanText = text
+                .replace(/\([^)]*\)/g, ' ')
+                .replace(/\/[^/]*\//g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+
+            if (voices.length > 0) {
+                const enVoice = voices.find(v => v.lang && v.lang.startsWith('en'));
+                if (enVoice) utterance.voice = enVoice;
+            }
+
+            utterance.onstart = () => {
+                if (btn) btn.classList.add('playing');
+                showToast('🔊 ' + cleanText);
+            };
+
+            utterance.onend = () => {
+                if (btn) btn.classList.remove('playing');
+            };
+
+            utterance.onerror = () => {
+                if (btn) btn.classList.remove('playing');
+                showToast('❌ 发音失败');
+            };
+
+            synth.speak(utterance);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(item.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
